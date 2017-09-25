@@ -10,6 +10,10 @@ lazy val root = (project in file(".")).
     name := "Hello",
     libraryDependencies ++= Seq(
       googleApi,
+      akka,
+      akkaHttp,
+      akkaHttpSprayJson,
+      akkaHttpTestKit,
       scalaTest % Test
     )
   )
