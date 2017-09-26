@@ -13,6 +13,12 @@
       <paper-textarea label="Input Area"></paper-textarea>
     </div>
 
+    <iron-ajax id="ajax"
+      url="http://localhost:5000/ping"
+      on-response="_handleResponse"
+      on-error="_handleError" auto>
+    </iron-ajax>
+
   </template>
 
   
@@ -35,6 +41,12 @@
           }
         };
       }
+      // _handleError() {
+      //   console.log(arguments)
+      // }
+      // _handleResponse() {
+      //   console.log(arguments)
+      // }
     }
 
     window.customElements.define(SentimentAwareInput.is, SentimentAwareInput);
