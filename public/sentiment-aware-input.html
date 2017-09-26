@@ -8,19 +8,32 @@
       :host {
         display: block;
       }
+
+      .negative {
+        --paper-input-container-color: #cc0000;
+        --paper-input-container-focus-color: #cc0000;
+      }
+
+      .positive {
+        --paper-input-container-color:#00B600;
+        --paper-input-container-focus-color: #00B600;
+      }
+
     </style>
     <div>
-      <paper-textarea label="Input Area"></paper-textarea>
+      <paper-textarea class$="[[getClass(sentiment)]]" label="Input Area" value="{{text}}"></paper-textarea>
     </div>
 
     <iron-ajax id="ajax"
-      url="/ping"
+      url="/stanford"
+      method="post"
+      body="[[text]]"
       content-type="text/plain; charset=UTF-8"
       handle-as="text"
-      on-response="_handleResponse"
-      on-error="_handleError" auto>
+      on-response="handleResponse"
+      debounce-duration="300"
+      on-error="handleError" auto>
     </iron-ajax>
-
 
   </template>
 
@@ -41,14 +54,38 @@
           prop1: {
             type: String,
             value: 'sentiment-aware-input'
-          }
+          },
+          text: {
+            type: String,
+            notify: true,
+            value: "",
+          },
+          sentiment: {
+            type: Number,
+            notify: true,
+            value: 0.0
+          },
+          accentClass: {}
         };
       }
-      _handleError() {
+      getClass(sentiment) {
+        console.log(sentiment)
+        if (sentiment < 0) {
+          return 'negative'
+        } 
+        
+        if (sentiment > 0) {
+          return 'positive'
+        }
+
+        return ''
+        
+      }
+      handleError() {
         console.log(arguments)
       }
-      _handleResponse(e, request) {
-        console.log(e.detail.response)
+      handleResponse(e, request) {
+        this.set("sentiment", parseFloat(e.detail.response))
       }
     }
 
