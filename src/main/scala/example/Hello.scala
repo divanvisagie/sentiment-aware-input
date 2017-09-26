@@ -33,11 +33,21 @@ object Hello extends App {
       getFromDirectory("public")
     }
 
+  val sentimentAnalyzer = SentimentAnalyzer()
+
   val route: Route =
     staticResources ~
     path("ping") {
       get {
         complete(HttpEntity(ContentTypes.`text/plain(UTF-8)`, "pong"))
+      }
+    } ~
+    path("sentiment") {
+      post {
+        entity(as[String]) { text =>
+          val answer = sentimentAnalyzer.analyze(text).getScore.toString
+          complete(HttpEntity(ContentTypes.`text/plain(UTF-8)`, answer))
+        }
       }
     }
 
