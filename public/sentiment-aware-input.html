@@ -1,4 +1,6 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="bower_components/iron-ajax/iron-ajax.html">
 
 <dom-module id="sentiment-aware-input">
   <template>
@@ -7,9 +9,13 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <div>
+      <paper-textarea label="Input Area"></paper-textarea>
+    </div>
+
   </template>
 
+  
   <script>
     /**
      * `sentiment-aware-input`
