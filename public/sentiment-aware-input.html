@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="sentiment-aware-input">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `sentiment-aware-input`
+     * A sentiment aware input
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class SentimentAwareInput extends Polymer.Element {
+      static get is() { return 'sentiment-aware-input'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'sentiment-aware-input'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(SentimentAwareInput.is, SentimentAwareInput);
+  </script>
+</dom-module>
