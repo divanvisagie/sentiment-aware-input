@@ -18,7 +18,7 @@ object Hello extends App {
 
   val textToAnalyze = "Hello World"
 
-  val result = new SentimentAnalyzer().analyze(textToAnalyze)
+  val result = SentimentAnalyzer().analyze(textToAnalyze)
   println(s"Text $textToAnalyze")
   println(s"Sentiment: ${result.getScore}")
 

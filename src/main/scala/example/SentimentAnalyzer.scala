@@ -15,5 +15,5 @@ class SentimentAnalyzer {
 }
 
 object SentimentAnalyzer {
-  def apply: SentimentAnalyzer = new SentimentAnalyzer()
+  def apply(): SentimentAnalyzer = new SentimentAnalyzer()
 }
