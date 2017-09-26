@@ -24,7 +24,11 @@ lazy val root = (project in file(".")).
       "com.typesafe.akka" %% "akka-testkit"         % versions.akka,
       "com.typesafe.akka" %% "akka-http"            % versions.akkaHttp,
       "com.typesafe.akka" %% "akka-http-spray-json" % versions.akkaHttp,
-      "com.typesafe.akka" %% "akka-http-testkit"    % versions.akkaHttp
+      "com.typesafe.akka" %% "akka-http-testkit"    % versions.akkaHttp,
+      "org.slf4j" % "slf4j-simple" % "1.6.4",
+      "edu.stanford.nlp" % "stanford-corenlp" % "3.8.0",
+      "edu.stanford.nlp" % "stanford-corenlp" % "3.8.0" classifier "models",
+      "edu.stanford.nlp" % "stanford-parser" % "3.8.0"
     ),
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-core",

@@ -16,14 +16,6 @@ object Hello extends App {
   implicit val materializer = ActorMaterializer()
 
 
-  val textToAnalyze = "Hello World"
-
-  val result = SentimentAnalyzer().analyze(textToAnalyze)
-  println(s"Text $textToAnalyze")
-  println(s"Sentiment: ${result.getScore}")
-
-
-
   //set up the server
   val staticResources =
     pathPrefix("") {
@@ -42,10 +34,18 @@ object Hello extends App {
         complete(HttpEntity(ContentTypes.`text/plain(UTF-8)`, "pong"))
       }
     } ~
-    path("sentiment") {
+    path("google") {
       post {
         entity(as[String]) { text =>
-          val answer = sentimentAnalyzer.analyze(text).getScore.toString
+          val answer = sentimentAnalyzer.analyzeWithGoogle(text).toString
+          complete(HttpEntity(ContentTypes.`text/plain(UTF-8)`, answer))
+        }
+      }
+    } ~
+    path("stanford") {
+      post {
+        entity(as[String]) { text =>
+          val answer = sentimentAnalyzer.analyzeWithCoreNLP(text).toString
           complete(HttpEntity(ContentTypes.`text/plain(UTF-8)`, answer))
         }
       }
