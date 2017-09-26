@@ -20,7 +20,7 @@ object Hello extends App {
   val staticResources =
     pathPrefix("") {
       pathEndOrSingleSlash {
-        getFromDirectory("public/index.html")
+        getFromDirectory("public/demo/index.html")
       } ~
       getFromDirectory("public")
     }
