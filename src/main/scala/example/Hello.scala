@@ -22,7 +22,7 @@ object Hello extends App {
       pathEndOrSingleSlash {
         getFromDirectory("public/demo/index.html")
       } ~
-      getFromDirectory("public")
+      getFromDirectory("public/bower_components") ~ getFromDirectory("public")
     }
 
   val sentimentAnalyzer = SentimentAnalyzer()
