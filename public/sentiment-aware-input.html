@@ -1,4 +1,4 @@
-<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="bower_components/polymer/polymer-element.html">
 <link rel="import" href="bower_components/paper-input/paper-textarea.html">
 <link rel="import" href="bower_components/iron-ajax/iron-ajax.html">
 
@@ -32,7 +32,7 @@
       handle-as="text"
       on-response="handleResponse"
       debounce-duration="300"
-      on-error="handleError" auto>
+      auto>
     </iron-ajax>
 
   </template>
@@ -73,16 +73,10 @@
         if (sentiment < 0) {
           return 'negative'
         } 
-        
         if (sentiment > 0) {
           return 'positive'
         }
-
         return ''
-        
-      }
-      handleError() {
-        console.log(arguments)
       }
       handleResponse(e, request) {
         this.set("sentiment", parseFloat(e.detail.response))
