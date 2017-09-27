@@ -22,7 +22,8 @@ object Hello extends App {
       pathEndOrSingleSlash {
         getFromDirectory("public/demo/index.html")
       } ~
-      getFromDirectory("public/bower_components") ~ getFromDirectory("public")
+      getFromDirectory("public/bower_components") ~
+      getFromDirectory("public")
     }
 
   val sentimentAnalyzer = SentimentAnalyzer()
@@ -55,7 +56,6 @@ object Hello extends App {
   val ip = "localhost"
   println(s"serving at http://$ip:$port")
   val bindingFuture = Http().bindAndHandle(route, ip, port)
-
 
 }
 
