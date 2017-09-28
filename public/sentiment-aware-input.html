@@ -25,13 +25,13 @@
     </div>
 
     <iron-ajax id="ajax"
-      url="/stanford"
+      url="[[url]]"
       method="post"
       body="[[text]]"
       content-type="text/plain; charset=UTF-8"
       handle-as="text"
       on-response="handleResponse"
-      debounce-duration="300"
+      debounce-duration="500"
       auto>
     </iron-ajax>
 
@@ -51,10 +51,6 @@
       static get is() { return 'sentiment-aware-input'; }
       static get properties() {
         return {
-          prop1: {
-            type: String,
-            value: 'sentiment-aware-input'
-          },
           text: {
             type: String,
             notify: true,
@@ -65,7 +61,10 @@
             notify: true,
             value: 0.0
           },
-          accentClass: {}
+          url: {
+            type: String,
+            notify: true
+          }
         };
       }
       getClass(sentiment) {
